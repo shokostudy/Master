@@ -218,22 +218,31 @@
     }
   
 // localstrageに口座残高データがない場合は作成
+    // // bank1
+    // if(!localStorage.getItem("balanceList1")){
+    //     localStorage.setItem("balanceList1", JSON.stringify(bank1Data));   
+    // }
+    // // bank2
+    // if(!localStorage.getItem("balanceList2")){
+    //     localStorage.setItem("balanceList2", JSON.stringify(bank2Data));   
+    // }
+    // // bank3
+    // if(!localStorage.getItem("balanceList3")){
+    //     localStorage.setItem("balanceList3", JSON.stringify(bank3Data));   
+    // }
+    // // bank4
+    // if(!localStorage.getItem("balanceList4")){
+    //     localStorage.setItem("balanceList4", JSON.stringify(bank4Data));   
+    // }
+// テスト用（毎回テストデータ読み込み）
     // bank1
-    if(!localStorage.getItem("balanceList1")){
         localStorage.setItem("balanceList1", JSON.stringify(bank1Data));   
-    }
     // bank2
-    if(!localStorage.getItem("balanceList2")){
         localStorage.setItem("balanceList2", JSON.stringify(bank2Data));   
-    }
     // bank3
-    if(!localStorage.getItem("balanceList3")){
         localStorage.setItem("balanceList3", JSON.stringify(bank3Data));   
-    }
     // bank4
-    if(!localStorage.getItem("balanceList4")){
         localStorage.setItem("balanceList4", JSON.stringify(bank4Data));   
-    }  
 
 // 口座残高データを取得
     //  bank1

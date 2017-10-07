@@ -103,10 +103,64 @@ function pieHideCancel(id) {
 
 // 円グラフデータ選択ダイアログOK押下時
 function pieHideOK(id) {
-
+    // 銀行名データを取得
+    var pieBanks = JSON.parse(localStorage.getItem("bankList"));
     // グラフ用データを更新
-
+        // 選択年
+        var pieSelectYear = document.getElementById("pie_year").value;
+        // 選択月
+        var pieSelectMonth = document.getElementById("pie_month").value;
+        //  bank1
+        var pieSelectBalances1 = JSON.parse(localStorage.getItem("balanceList1"));
+        var pieSelectBalances1Data = pieSelectBalances1[pieSelectYear][pieSelectMonth]['y'];
+        //  bank2
+        var pieSelectBalances2 = JSON.parse(localStorage.getItem("balanceList2"));
+        var pieSelectBalances2Data = pieSelectBalances2[pieSelectYear][pieSelectMonth]['y'];
+        //  bank3
+        var pieSelectBalances3 = JSON.parse(localStorage.getItem("balanceList3"));
+        var pieSelectBalances3Data = pieSelectBalances3[pieSelectYear][pieSelectMonth]['y'];
+        //  bank4
+        var pieSelectBalances4 = JSON.parse(localStorage.getItem("balanceList4"));
+        var pieSelectBalances4Data = pieSelectBalances4[pieSelectYear][pieSelectMonth]['y'];
+        
+        var pieSelectTotal = pieSelectBalances1Data + pieSelectBalances2Data + pieSelectBalances3Data + pieSelectBalances4Data;
+        
+    // 当月分データを作成
+    var pieSelectData = [
+        [pieBanks.bank1, pieSelectBalances1Data], 
+        [pieBanks.bank2, pieSelectBalances2Data],
+        [pieBanks.bank3, pieSelectBalances3Data],
+        [pieBanks.bank4, pieSelectBalances4Data]
+    ];
     // グラフ更新
+    rePlot2 = jQuery.jqplot('chart2', 
+    [pieSelectData], 
+    {
+        seriesColors:['#ff9f40','#ffcd56','#4bc0c0','#36a2eb'],
+        title: '', 
+        seriesDefaults: {
+            shadow: false, 
+            renderer: jQuery.jqplot.PieRenderer, 
+            rendererOptions: { 
+            startAngle: 180, 
+            sliceMargin: 4, 
+            showDataLabels: true } 
+        }, 
+        legend: { show:true, location: 'se' },
+        // グラフ全体を囲むグリッドの設定        													
+        grid: {														
+            // グラフを囲む枠線の太さ、0で消える														
+            borderWidth: 0,														
+            // 背景色を透明に														
+            background: 'transparent',														
+            // 影もいらない														
+            shadow: false,														
+        }
+    }
+    );    
+    rePlot2.replot();
+    // 円グラフタイトルを設定
+    document.getElementById("chart2_title").innerHTML = pieSelectYear + '/' + pieSelectMonth + '　total : ' + pieSelectTotal;
     
     document.getElementById(id).remove();
     

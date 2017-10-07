@@ -9,6 +9,14 @@ body {
     font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'; 
 }
 
+hr.end{
+    clear:both;
+    visibility: hidden;
+    height: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 h2.h201{
     font-size: 0.8rem;
     text-indent: 10px;
@@ -22,12 +30,13 @@ h2.h201{
 
 section#label_wrapper{
     width: 90%;
-    margin:0 auto;
+    margin:0 auto 20px;
     text-align: left;
+    display: block;
 }
 
 div#label01, div#label02, div#label03, div#label04{
-    width: 30%;
+    width: 25%;
     float: left;
     line-height: 1.3rem;
     display: inline-block;
